@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcAzTest.protos";
+
+import "google/api/annotations.proto";
+
+package NotificationsGrpc;
+
+service NotificationsGrpc {
+	rpc Subscribe(Empty) returns (stream Notification);
+	rpc Send(NotificationRequest) returns (Empty) {
+		option (google.api.http) = { post: "/notification" body: "body" };
+	}
+}
+
+message Empty {
+
+}
+
+message Notification {
+	string sender = 1;
+	string message = 2;
+}
+
+message NotificationRequest {
+	Notification body = 1;
+}
