@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{4836941C-3E9D-4ACA-B290-9EC4F41C3132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{4836941C-3E9D-4ACA-B290-9EC4F41C3132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{C27ED600-E9B6-4B0F-8B8D-0F48AA32B7E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{C27ED600-E9B6-4B0F-8B8D-0F48AA32B7E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{960DF462-55B3-4A0D-BD24-C38D89945B4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{960DF462-55B3-4A0D-BD24-C38D89945B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\GrpcService.csproj", "{EA77B370-0ACC-4702-B431-49DF6DA332E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{960DF462-55B3-4A0D-BD24-C38D89945B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{960DF462-55B3-4A0D-BD24-C38D89945B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{960DF462-55B3-4A0D-BD24-C38D89945B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA77B370-0ACC-4702-B431-49DF6DA332E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA77B370-0ACC-4702-B431-49DF6DA332E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA77B370-0ACC-4702-B431-49DF6DA332E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA77B370-0ACC-4702-B431-49DF6DA332E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
