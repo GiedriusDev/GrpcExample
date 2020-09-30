@@ -8,25 +8,25 @@ namespace Client
 {
     class Program
     {
-        static List<Notification> Messages = new List<Notification>();
+        static List<Notification> _messages = new List<Notification>();
 
         static void RefreshNotifications ()
         {
             Console.Clear();
 
-            foreach (Notification message in Messages)
+            foreach (Notification message in _messages)
                 Console.WriteLine($"[{message.Sender}] {message.Message}.");
         }
 
         static void Main()
         {
-            const string ServerAddress = "https://localhost:44355";
+            const string serverAddress = "https://wa-grpctest-skylight001-dev.azurewebsites.net";
 
-            NotificationsDerived notifications = new NotificationsDerived(ServerAddress);
+            NotificationsDerived notifications = new NotificationsDerived(serverAddress);
 
             notifications.Subscribe(notifications =>
             {
-                Messages.Add(notifications);
+                _messages.Add(notifications);
                 return null;
             });
 

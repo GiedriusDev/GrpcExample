@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +19,8 @@ namespace Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Config.Initialize(configuration);
+            NotificationsDerived.Initialize(Config.ServerAddress);
         }
 
         public IConfiguration Configuration { get; }

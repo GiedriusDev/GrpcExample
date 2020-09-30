@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\Proto\notifications.proto" GrpcServices="Server" Link="Proto\Notifications.proto" />
+    <Protobuf Include="..\Proto\notifications.proto" GrpcServices="Client" Link="Proto\Notifications.proto" />
   </ItemGroup>
 
 </Project>

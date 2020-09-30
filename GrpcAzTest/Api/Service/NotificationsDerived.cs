@@ -5,37 +5,40 @@ using System.Net.Http;
 using System;
 using Grpc.Core;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace Client.Service
+namespace Api.Service
 {
-    public class NotificationsDerived
+    public static class NotificationsDerived
     {
-        private NotificationsGrpc.NotificationsGrpcClient _client = null;
-        public int DelayInMiliseconds;
+        private static NotificationsGrpc.NotificationsGrpcClient Client;
+        public static int DelayInMiliseconds;
+        public static List<Notification> Notifications { get; set; } = new List<Notification>();
 
-        public NotificationsDerived(string address, int delayInMiliseconds = 1000)
+        public static void Initialize(string address, int delayInMiliseconds = 1000)
         {
             GrpcWebHandler handler = new GrpcWebHandler(new HttpClientHandler());
             GrpcChannel channel = GrpcChannel.ForAddress(address, new GrpcChannelOptions
             {
                 HttpClient = new HttpClient(handler)
             });
-            _client = new NotificationsGrpc.NotificationsGrpcClient(channel);
+            Client = new NotificationsGrpc.NotificationsGrpcClient(channel);
             DelayInMiliseconds = delayInMiliseconds;
+
+            Subscribe(notification =>
+            {
+                Notifications.Add(notification);
+                return null;
+            });
         }
 
-        public void Send(Notification notification)
-        {
-            _client.Send(new NotificationRequest() { Body = notification });
-        }
-
-        public void Subscribe(Func<Notification, object> callback)
+        private static void Subscribe(Func<Notification, object> callback)
         {
             Task.Run(async () =>
             {
                 try
                 {
-                    AsyncServerStreamingCall<Notification> stream = _client.Subscribe(new Empty());
+                    AsyncServerStreamingCall<Notification> stream = Client.Subscribe(new Empty());
 
                     while (await stream.ResponseStream.MoveNext().ConfigureAwait(false))
                     {
